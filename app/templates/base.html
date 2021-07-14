@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Microblog</title>
+        {% else %}
+        <title>Welcome to Microblog</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('home') }}"> Home </a>
+        </div>
+        <div class="Create button">
+            <a href="{{ url_for('') }}">Create</a>
+        <div class="container">
+
+        </div>
+
+    </body>
+</html>
