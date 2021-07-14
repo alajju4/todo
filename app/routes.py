@@ -1,21 +1,32 @@
 from app import app
 from flask import render_template, redirect, url_for
-from app.forms import CreateTodoForm
+from app.forms import CreateProjectForm, CreateTodoForm
 from app.models import Project, Task
 from datetime import datetime
 
-@app.route('/')
-@app.route('/home', method=['GET'])
-def home():
-    project = project.projectname
-    return render_template('home.html', title='home', project=project)
-
-@app.route('/home/project/<project_id>', method=['POST'])
-def project_post():
+# html 반환용
+@app.route('/', method=['GET'])
+def re1():
+    return redirect(url_for('project'))
+@app.route('/project', method=['GET'])
+def project():
+    form = CreateProjectForm
     
-    return render_template('project_create', title='create-project')
-@app.route('/home/project/<project_id>', method=['DELETE'])
-@app.route('/home/project/<project_id>/todo', method=['GET'])
-@app.route('/home/project/<project_id>/todo', method=['PUT'])
-@app.route('/home/project/<project_id>/todo', method=['POST'])
-@app.route('/home/project/<project_id>/todo', method=['DELETE'])
+    return render_template('project.html', title='Project', form=form, projects=projects, post_url=, recent_url=)
+
+@app.route('/project/<project_id>', method=['GET'])
+def re2():
+    return redirect(url_for('todo'))
+@app.route('/project/<project_id>/todo', method=['GET'])
+def todo():
+    return render_template('todo.html', title='Todo', form=form, todos=todos)
+
+
+# json 반환용   jsonify
+@app.route('/api/projects', method=['GET'])
+@app.route('/api/projects', method=['POST'])
+@app.route('/api/projects/<project_id>', method=['DELETE'])
+@app.route('/api/projects/<project_id>/todos', method=['GET'])
+@app.route('/api/projects/<project_id>/todos', method=['POST'])
+@app.route('/api/projects/<project_id>/todos/<task_id>', method=['PUT'])
+@app.route('/api/projects/<project_id>/todos/<task_id>', method=['DELETE'])
