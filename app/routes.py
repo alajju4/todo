@@ -25,6 +25,10 @@ def todo():
 # json 반환용   jsonify
 @app.route('/api/projects', method=['GET'])
 @app.route('/api/projects', method=['POST'])
+def create-project:
+    if form.validate_on_submit():
+        db.session.add(project)
+        db.session.commit()
 @app.route('/api/projects/<project_id>', method=['DELETE'])
 @app.route('/api/projects/<project_id>/todos', method=['GET'])
 @app.route('/api/projects/<project_id>/todos', method=['POST'])
