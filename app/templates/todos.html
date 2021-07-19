@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <td><h1>Todos</h1></td>
+
+    {% if form %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.project(size=32) }}
+            {{ form.submit() }}
+        </p>
+    </form>
+    {% endif %}
+
+    {% for project in projects %}
+        {% include '_task.html' %}
+    {% endfor %}
+
+    {% if post_url %}
+    <a href="{{ prev_url }}"> Newer Projects</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}"> Older Projects</a>
+    {% endif %}
+
+{% endblock content %}
