@@ -2,27 +2,16 @@
 
 {% block content %}
 
-    <td><h1>Todos</h1></td>
-
-    {% if form %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.project(size=32) }}
-            {{ form.submit() }}
-        </p>
-    </form>
-    {% endif %}
-
-    {% for project in projects %}
+    <div class="container">
+        <h1>Todo List</h1>
+        <div class="create">
+            <a href="">create</a>
+        </div>
+    {% for todo in todos %}
         {% include '_task.html' %}
     {% endfor %}
 
-    {% if post_url %}
-    <a href="{{ prev_url }}"> Newer Projects</a>
-    {% endif %}
-    {% if next_url %}
-    <a href="{{ next_url }}"> Older Projects</a>
-    {% endif %}
+    <table>
+        <tr>
 
 {% endblock content %}

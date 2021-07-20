@@ -3,9 +3,9 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - Todo</title>
         {% else %}
-        <title>Welcome to Microblog</title>
+        <title>Welcome to David's todo app</title>
         {% endif %}
     </head>
     
@@ -13,5 +13,6 @@
         <div class="navbar">
             <a href="{{ url_for('') }}"> Home </a>
         </div>
+        {% block content %}  {% endblock %}
     </body>
 </html>

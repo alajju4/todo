@@ -7,7 +7,7 @@ from time import time
 class Project(db.model):
     id = db.Column(db.Integer, primary_key=True)
     projectname = db.Column(db.String(20))
-	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Project {}>'.format(self.name)
@@ -21,5 +21,5 @@ class Task(db.model):
 	status = db.Column(db.Stirng(5))
 	day_id = db.Column(db.Integer, db.ForeignKey('project.id'))
 
-    def __repr__(self):
-        return '<Task {}>'.format(self.body)
+	def __repr__(self):
+		return '<Task {}>'.format(self.name)
