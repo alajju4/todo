@@ -1,7 +1,10 @@
 <!-- project.html 에서  {% include  %} -->
 <table>
-    <tr>
-        <td>{{ project.projectname }}</td>
-        <td>delete</td>
-    </tr>
+    <div class="project">
+        <div class="projectname">
+            {{ project.projectname }}
+            <a class="delete" target="_blank" href="{{ url_for('delete_project') }}">
+                <img class="icon" src="@/assets/delete.png">
+        </div>
+    </div>
 </table>

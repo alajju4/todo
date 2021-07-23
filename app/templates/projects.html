@@ -14,10 +14,11 @@
         </div>
     </div>
 
-
-    {% for project in projects %}
-        {% include '_project.html' %}
-    {% endfor %}
+    <div class="contents">
+        {% for project in projects %}
+            {% include "_project.html" %}
+        {% endfor %}
+    </div>
 
     {% if post_url %}
     <a href="{{ prev_url }}"> Newer Projects</a>

@@ -7,11 +7,12 @@
         <div class="create">
             <a href="">create</a>
         </div>
-    {% for todo in todos %}
-        {% include '_task.html' %}
-    {% endfor %}
+    </div>
 
-    <table>
-        <tr>
+    <div class="contents">
+    {% for todo in todos %}
+        {% include "_task.html" %}
+    {% endfor %}
+    </div>
 
 {% endblock content %}
