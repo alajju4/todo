@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="head">
+        <h1>{{ project.projectname }}</h1>
+        </div>
+
+        <div class="time">
+        {{ project.timestamp }}
+        </div>
+
+        <div class="create">
+            <a href="{{ url_for('create_tasks') }}">create</a>
+        </div>
+    </div>
+
+    <div class="contents">
+        {% if tasks %}
+            {% for task in tasks %}
+                {% include "_task.html" %}
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+    </div>
+
+{% endblock content %}

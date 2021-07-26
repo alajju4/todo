@@ -3,34 +3,31 @@ from flask import render_template, redirect, url_for, request
 from app.forms import CreateProjectForm, CreateTaskForm
 from app.models import Project, Task
 from datetime import datetime
+from werkzeug.urls import url_parse
 
 # html 반환용
-@app.route('/', methods=['GET'])
-def re1():
-    return redirect(url_for('project'))
+@app.route('/', methods=['GET','POST'])
 @app.route('/projects', methods=['GET','POST'])
 def project():
     form = CreateProjectForm
     if form.validate_on_submit:
-        project = Project(projectname=form.projectname.data, timestamp = datetime.date)
+        project = Project(projectname=form.projectname.data, timestamp=datetime.data)
         db.session.add(project)
         db.session.commit()
         return redirect(url_for('project'))
     #페이지
     page = request.args.get('page', 1, type=int)
-    projects = project.paginate(page, app.config['PROJECTS_PER_PAGE'], False)
-    next_url = url_for('project', page=project.next_num) \
-        if projects.has_next else None
-    prev_url = url_for('project', page=project.prev_num) \
-        if projects.has_next else None
-    return render_template('projects.html', title='Projects', form=form, projects=project.items, next_url=next_url, prev_url=prev_url)
+    projects = Project.query.order_by(Project.timestamp.desc()).paginate(page, app.config['PROJECTS_PER_PAGE'], False)
+    next_url = url_for('project', page=project.next_num) if project.has_next else None
+    prev_url = url_for('project', page=project.prev_num) if project.has_next else None
+    return render_template('projects.html', title='Projects', form=form, projects=projects.items, next_url=next_url, prev_url=prev_url)
 # @app.route('/projects/<project_id>/delete', methods=['DELETE'])
 # def delete_project:
-#     Project.query.filter_by(Project.id).delete()
+#     Project.query.filter_by(project_id).delete()
 #     db.session.commit()
 #     return redirect(url_for('project'))
 
-@app.route('/projects/<project_id>', methods=['GET'])
+@app.route('/projects/<project_id>/', methods=['GET'])
 def re2():
     return redirect(url_for('task'))
 @app.route('/projects/<project_id>/tasks', methods=['GET'])
@@ -83,3 +80,8 @@ def create_task():
 #         )
 # @app.route('/api/projects/<project_id>/tasks/<task_id>', method=['PUT'])
 # @app.route('/api/projects/<project_id>/tasks/<task_id>', method=['DELETE'])
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
+    #app.run(debug=True)

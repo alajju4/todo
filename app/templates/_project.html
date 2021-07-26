@@ -3,8 +3,10 @@
     <div class="project">
         <div class="projectname">
             {{ project.projectname }}
+        </div>
+        <div class="icon">
             <a class="delete" target="_blank" href="{{ url_for('delete_project') }}">
-                <img class="icon" src="@/assets/delete.png">
+                <img class="icon" src="@/statics/delete.png">
         </div>
     </div>
 </table>

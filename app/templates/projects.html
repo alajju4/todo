@@ -2,7 +2,9 @@
 
 {% block content %}
     <div class="container">
+        <div class="head">
         <h1>Project List</h1>
+        </div>
         <div class="create">
             {% if form %}
             <form action="/create_project" method="post">
@@ -15,9 +17,13 @@
     </div>
 
     <div class="contents">
-        {% for project in projects %}
-            {% include "_project.html" %}
-        {% endfor %}
+        {% if projects %}
+            {% for project in projects %}
+                {% include "_project.html" %}
+            {% endfor %}
+        {% else %}
+            <p>None.. create your project</p>
+        {% endif %}
     </div>
 
     {% if post_url %}

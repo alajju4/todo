@@ -10,10 +10,11 @@
         </p>
         <p>
             {{ form.category.label }}
-            {{ form.category}}
+            {{ form.category() }}
         </p>
         <p>
             {{ form.priority.label }}
+            {{ form.priority() }}
         </p>
         <p>{{ form.submit() }}</p>
     </form>

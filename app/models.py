@@ -19,7 +19,8 @@ class Task(db.Model):
 	priority = db.Column(db.String(6))
 	category = db.Column(db.String(6))
 	status = db.Column(db.String(5))
-	day_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+	project_id = db.Column(db.Integer, db.ForeignKey('project.id', ondelete='CASCADE'))
+	project = db.relationship('Project', backref=db.backref('todo_set', cascade='all, delete-orphan'))
 
 	def __repr__(self):
 		return '<Task {}>'.format(self.name)

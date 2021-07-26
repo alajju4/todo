@@ -10,31 +10,31 @@
         {% if todo.status == "Todo" %}
             <div class="todo">
                 <a class="edit" target="_blank" href="{{ url_for('edit_task') }}">
-                    <img class="icon" src="@/assets/edit.png">
+                    <img class="icon" src="@/statics/edit.png">
                 <a class="delete" target="_blank" href="{{ url_for('delete_task') }}">
-                    <img class="icon" src="@/assets/delete.png">
+                    <img class="icon" src="@/statics/delete.png">
                 <a class="move" target="_blank" href="{{ url_for('') }}">
-                    <img class="icon" src="@/assets/right.png">
+                    <img class="icon" src="@/statics/right.png">
             </div>
         <!-- doing -->
         {% elif todo.status == "Doing" %}
             <div class="doing">
                 <a class="move" target="_blank" href="{{ url_for('') }}">
-                    <img class="icon" src="@/assets/left.png">
+                    <img class="icon" src="@/statics/left.png">
                 <a class="edit" target="_blank" href="{{ url_for('edit_task') }}">
-                    <img class="icon" src="@/assets/edit.png">
+                    <img class="icon" src="@/statics/edit.png">
                 <a class="delete" target="_blank" href="{{ url_for('delete_task') }}">
-                    <img class="icon" src="@/assets/delete.png">
+                    <img class="icon" src="@/statics/delete.png">
                 <a class="move" target="_blank" href="{{ url_for('') }}">
-                    <img class="icon" src="@/assets/right.png">
+                    <img class="icon" src="@/statics/right.png">
         <!-- done -->
         {% else %}
                 <a class="move" target="_blank" href="{{ url_for('') }}">
-                    <img class="icon" src="@/assets/left.png">
+                    <img class="icon" src="@/statics/left.png">
                 <a class="edit" target="_blank" href="{{ url_for('edit_task') }}">
-                    <img class="icon" src="@/assets/edit.png">
+                    <img class="icon" src="@/statics/edit.png">
                 <a class="delete" target="_blank" href="{{ url_for('delete_task') }}">
-                    <img class="icon" src="@/assets/delete.png">
+                    <img class="icon" src="@/statics/delete.png">
         {% endif %}
     </div>
 </table>
