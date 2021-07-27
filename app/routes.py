@@ -11,7 +11,7 @@ from werkzeug.urls import url_parse
 def project():
     form = CreateProjectForm
     if form.validate_on_submit:
-        project = Project(projectname=form.projectname.data, timestamp=datetime.data)
+        project = Project(projectname=form.project.data)
         db.session.add(project)
         db.session.commit()
         return redirect(url_for('project'))
@@ -42,6 +42,8 @@ def create_task():
         db.session.commit()
         return redirect(url_for('task'))
     return render_template('create_task.html', title='create_task', form=form, task=task.items)
+
+
 # @app.route('/projects/<project_id>/tasks/edit', methods=['PUT'])
 # def edit_task():
 #     form = CreateTaskForm()
@@ -54,10 +56,6 @@ def create_task():
 #     Task.query.filter_by(Task.id).delete()
 #     db.session.commit()
 #     return redirect(url_for('task'))
-
-
-
-
 
 
 # # json 반환용   jsonify

@@ -9,7 +9,8 @@
             {% if form %}
             <form action="/create_project" method="post">
                 {{ form.hidden_tag() }}
-                    {{ form.project(size=32) }}
+                    {{ form.projectname.label }}
+                    {{ form.projectname(size=32) }}
                     {{ form.submit('create') }}
             </form>
             {% endif %}
