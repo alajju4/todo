@@ -8,18 +8,18 @@ from werkzeug.urls import url_parse
 # html 반환용
 @app.route('/', methods=['GET','POST'])
 @app.route('/projects', methods=['GET','POST'])
-def project():
-    form = CreateProjectForm
+def projects():
+    form = CreateProjectForm(request.form)
     if form.validate_on_submit:
         project = Project(projectname=form.project.data)
         db.session.add(project)
         db.session.commit()
-        return redirect(url_for('project'))
+        return redirect(url_for('projects'))
     #페이지
     page = request.args.get('page', 1, type=int)
     projects = Project.query.order_by(Project.timestamp.desc()).paginate(page, app.config['PROJECTS_PER_PAGE'], False)
-    next_url = url_for('project', page=project.next_num) if project.has_next else None
-    prev_url = url_for('project', page=project.prev_num) if project.has_next else None
+    next_url = url_for('projects', page=project.next_num) if project.has_next else None
+    prev_url = url_for('projects', page=project.prev_num) if project.has_next else None
     return render_template('projects.html', title='Projects', form=form, projects=projects.items, next_url=next_url, prev_url=prev_url)
 # @app.route('/projects/<project_id>/delete', methods=['DELETE'])
 # def delete_project:
