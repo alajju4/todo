@@ -1,12 +1,23 @@
-<!-- project.html 에서  {% include  %} -->
 <table>
     <div class="project">
         <div class="projectname">
-            {{ project.projectname }}
+            <ul>
+                <li><a href="/projects/{{ project.id }}/">{{ project.projectname }}</a><br>
+                {{ project.timestamp.date() }}
+            </ul>
         </div>
         <div class="icon">
-            <a class="delete" target="_blank" href="{{ url_for('delete_project') }}">
-                <img class="icon" src="statics/delete.png" width="20%"></a>
+            <a class="delete" target="_blank" href="{{ url_for('delete_project', project_id=project.id) }}">
+               delete </a>
+            <script type='text/javascript'>
+            $(document).ready(function(){
+                $(".delete").on('click', function() {
+                    if(confirm("정말로 삭제하시겠습니까?")) {
+                        location.href = $(this).data('uri');
+                    }
+                });
+            });
+            </script>
         </div>
     </div>
 </table>

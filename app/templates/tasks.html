@@ -4,11 +4,11 @@
 
     <div class="container">
         <div class="head">
-        <h1>{{ project.projectname }}</h1>
+            <h1>{{ project.projectname }}</h1>
         </div>
 
         <div class="time">
-        {{ project.timestamp }}
+        {{ project.timestamp.date() }}
         </div>
 
         <div class="create">

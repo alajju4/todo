@@ -4,7 +4,7 @@ from wtforms.validators import ValidationError, DataRequired, Length
 from app.models import Task, Project
 
 class CreateProjectForm(FlaskForm):
-    project = TextAreaField('Write Text', validators=[DataRequired(), Length(max=30)])
+    projectname = TextAreaField('write project name ->', validators=[DataRequired(), Length(max=30)])
     submit = SubmitField('Create Project')
 
 class CreateTaskForm(FlaskForm):

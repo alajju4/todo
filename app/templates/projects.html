@@ -7,11 +7,11 @@
         </div>
         <div class="create">
             {% if form %}
-            <form action="/create_project" method="post">
+            <form action="/projects" method="post">
                 {{ form.hidden_tag() }}
                     {{ form.projectname.label }}
                     {{ form.projectname(size=32) }}
-                    {{ form.submit('create') }}
+                    {{ form.submit }}
             </form>
             {% endif %}
         </div>
@@ -34,5 +34,5 @@
     <a href="{{ next_url }}"> Older Projects</a>
     {% endif %}
 
-{% endblock content %}
+{% endblock %}
 

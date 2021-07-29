@@ -9,4 +9,4 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 #페이지당 포스트 수
-    PROJECTS_PER_PAGE = 7
+    PROJECTS_PER_PAGE = 30
